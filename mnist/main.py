@@ -94,23 +94,23 @@ def main():
                         help='For Saving the current Model')
     args = parser.parse_args()
 
-    use_accel = not args.no_accel and torch.accelerator.is_available()
+    # use_accel = not args.no_accel and torch.accelerator.is_available()
 
     torch.manual_seed(args.seed)
 
-    if use_accel:
-        device = torch.accelerator.current_accelerator()
-    else:
-        device = torch.device("cpu")
+    #if use_accel:
+       # device = torch.accelerator.current_accelerator()
+    #else:
+    device = torch.device("cpu")
 
     train_kwargs = {'batch_size': args.batch_size}
     test_kwargs = {'batch_size': args.test_batch_size}
-    if use_accel:
-        accel_kwargs = {'num_workers': 1,
-                       'pin_memory': True,
-                       'shuffle': True}
-        train_kwargs.update(accel_kwargs)
-        test_kwargs.update(accel_kwargs)
+   # if use_accel:
+        #accel_kwargs = {'num_workers': 1,
+                      # 'pin_memory': True,
+                      # 'shuffle': True}
+        #train_kwargs.update(accel_kwargs)
+        #test_kwargs.update(accel_kwargs)
 
     transform=transforms.Compose([
         transforms.ToTensor(),
