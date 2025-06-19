@@ -100,7 +100,7 @@ def main():
 
     #if use_accel:
        # device = torch.accelerator.current_accelerator()
-    #else:
+    #else:    
     device = torch.device("cpu")
 
     train_kwargs = {'batch_size': args.batch_size}
